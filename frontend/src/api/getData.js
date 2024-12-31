@@ -9,12 +9,12 @@ export const GetData = () => {
             const response = await axios.get('http://127.0.0.1:8000/api/');
             return response.data;
      }
+     
     })
     
     return (
         <div>
-            Hey
-        {data && data.map(todo => {
+            {data && data.map(todo => {
             return <div><h1>{todo.title}</h1><p>{todo.description}</p></div>
         })}
         </div>
