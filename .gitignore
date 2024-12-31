@@ -1,7 +1,9 @@
 venv/
 somerandominfo.txt
 .vscode
+node_modules/
 
+# backend/
 backend/backend/__pycache__/
 backend/backend/__pycache__/urls.cpython-312.pyc/
 backend/backend/__pycache__/settings.cpython-312.pyc/
@@ -11,3 +13,9 @@ backend/backend/__pycache__/__init__.cpython-312.pyc/
 
 backend/to_do/__pycache__/
 backend/to_do/migrations/__pycache__/
+
+
+# frontend
+
+
+
