@@ -25,7 +25,7 @@ def ToDosAPI(request):
     
    
 
-@api_view(['PUT', 'DELETE'])
+@api_view(['PUT', 'DELETE', 'GET'])
 def editTodos(request, pk):
      # for updating the data that's already in database
     try: 
@@ -33,7 +33,14 @@ def editTodos(request, pk):
     except ToDo.DoesNotExist:
         return Response(status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'PUT':
+
+    # for getting the previous to-do for update input boxes to be filled with previous values
+    if request.method == 'GET':
+        serializer = ToDoSerializer(todo)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+
+    elif request.method == 'PUT':
         serializer = ToDoSerializer(todo, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -44,3 +51,5 @@ def editTodos(request, pk):
     elif request.method == 'DELETE':
             todo.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
