@@ -27,6 +27,7 @@ export const TodoList = () => {
 
          const onUpdate = (todo ) => {
             setUpdatedData(todo)
+            setIsupdatebuttonclicked(!isupdatebuttonclicked);
          }
 
     return <div>
