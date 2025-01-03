@@ -25,12 +25,10 @@ export const AddTodo = () => {
         mutate(todo);
     }
     
-    return <form method='POST' onSubmit={submitForm}>
-            <label for='title' ></label>
-            <input id='title' type='text' value={title} name='title' onChange={(event) => setTitle(event.target.value)} />
-            <label for='description' ></label>
-            <textarea id='description' name='description' value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
-            {isPending ?<button>Adding Todo...</button> : <button>Add Todo</button>} 
-            {isError && <p style={{color: 'red'}}>Error: {error.message}</p>}
-        </form>
+    return <div className="add-form-section"><form method='POST' onSubmit={submitForm} className="add-form">
+    <label for='title' className="title"><input id='title' type='text' value={title} name='title' onChange={(event) => setTitle(event.target.value)} placeholder="Title"/></label>
+    <label for='description' className="description"><textarea id='description' name='description' value={description} onChange={(event) => setDescription(event.target.value)} placeholder="Description"></textarea></label>
+    {(isPending && !isError) ?<button className="add-button">Adding Todo...</button> : <button className="add-button">Add Todo</button>} 
+    {isError && <p style={{color: 'red'}}>Error: {error.message}</p>}
+</form></div>
 }

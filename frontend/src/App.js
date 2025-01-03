@@ -12,7 +12,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       < AddTodo />
       < TodoList />
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
     </div>
 

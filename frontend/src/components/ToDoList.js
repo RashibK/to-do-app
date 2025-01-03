@@ -30,12 +30,13 @@ export const TodoList = () => {
             setIsupdatebuttonclicked(!isupdatebuttonclicked);
          }
 
-    return <div>
+    return <div className="all-todos">
+        
         {isLoading && <p>...Loading....</p>}
         {isError && <p>{error?.message}</p>}
         <UpdateTodo updatedData={updatedData} setUpdatedData={setUpdatedData} isupdatebtnclicked={isupdatebuttonclicked} setIsupdatebuttonclicked={setIsupdatebuttonclicked} />
             {alltodos && alltodos.map(todo => {
-                return <div><h1>{todo.title}</h1><p>{todo.description}</p><button id={todo.id} onClick={() => { onUpdate(todo)} }>Update</button> <button id={todo.id} onClick={(event) => {mutate(event.target.id)}}>Delete</button></div>
+                return <div className=""><h1>{todo.title}</h1><p>{todo.description}</p><button id={todo.id} onClick={() => { onUpdate(todo)} }>Update</button> <button id={todo.id} onClick={(event) => {mutate(event.target.id)}}>Delete</button></div>
                 })}
     </div>
 }
