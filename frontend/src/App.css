@@ -11,7 +11,7 @@
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: aqua;
+
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -56,7 +56,6 @@
 /* add-todo */
 
 .add-form-section {
-  background-color:beige;
   width: 50%;
   margin: 0 auto;
 }
@@ -103,23 +102,48 @@
 
 /* todos-list */
 
+.all-todos-title {
+  font-size: 3em;
+  font-weight: bold;
+}
+
 .todo {
   border: 2px solid black;
   display: flex;
   padding: 1em;
   justify-content: space-between;
   align-items: center;
+  margin: 1em;
+  border-radius: 0.5em;
 }
 
 .todo-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 80%;
+}
+
+.todo-title {
+  width: 100%;
+  font-size: 23px;
+  font-weight: bold;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: start;
+}
+
+.todo-description {
+  width: 100%;
+  word-break: break-word; 
+  overflow-wrap: break-word;
+  text-align: start;
 }
 
 .todo-buttons {
   display: flex;
   align-items: center;
+  width: 15%;
 }
 .edit-icon, .delete-icon {
   cursor: pointer;
@@ -128,7 +152,6 @@
 /* updateForm component */
 
 .form-box {
-  background-color: aqua;
   padding: 1em;
   width: 50%;
   display: flex;
