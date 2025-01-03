@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+
 export const UpdateForm = (props) => {
+
+    
     const queryClient = useQueryClient();
 
     const [title, setTitle] = useState('');
@@ -12,7 +15,26 @@ export const UpdateForm = (props) => {
         title: title,
         description: description
     }
+
+    // this usequery gets a specific todo
+    const {data: singleTododata} = useQuery({
+        queryKey: ['single-todo'],
+        queryFn: async () => {
+            const response = await axios.get(`http://127.0.0.1:8000/api/${Number(props.id)}`);
+            return response.data;
         
+        },
+        onSuccess: () => {
+
+        setTitle(singleTododata?.title);
+        setDescription(singleTododata?.description);
+        alert('hey')
+        }
+        
+
+    })  
+
+    // this code is for updating the to-do
     const { mutate } = useMutation({
         mutationFn: async () => {
             const response = await axios.put(`http://127.0.0.1:8000/api/${Number(props.id)}`, todo);
@@ -25,13 +47,15 @@ export const UpdateForm = (props) => {
         }
     })
 
+
+    // this function is run when the update button is clicked
     const onUpdateSubmit = (event) => {
         event.preventDefault(); 
+
         mutate(todo);
 
         
     }
-
 
 
     const onCancelClick = () => {
@@ -39,7 +63,7 @@ export const UpdateForm = (props) => {
     }
     return (
         <>
-        {props.isUpdateFormOpen &&<div className="form-box">
+        {(props.isUpdateFormOpen && props.id !== '') &&<div className="form-box">
             <h1 className="update-title">Update Your To-do</h1>
             <form className="actual-form" onSubmit={(event) => {onUpdateSubmit(event)}}>
             <label for='update-title' className="update-title" ><input id='update-title' type='text' placeholder='To-do Title...'

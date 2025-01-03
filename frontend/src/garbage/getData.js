@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, u, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { UpdateForm } from "../components/updateForm";
-import { onUpdateSubmit } from "../functions/onUpdateSumbit";
+import { UpdateForm } from "./updateForm";
+import { onUpdateSubmit } from "./onUpdateSumbit";
 
 export const GetData = () => {
+    const queryClient = useQueryClient();
+
     const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
     const [updateId, setUpdateId] = useState('');
 
@@ -18,9 +20,13 @@ export const GetData = () => {
      
     })
     
-    const updateData = async (id) => {
-        setIsUpdateFormOpen(!isUpdateFormOpen);
+    const updateData =  (id) => {
         setUpdateId(String(id));
+
+        queryClient.invalidateQueries({queryKey: ['single-todo']})
+        setIsUpdateFormOpen(!isUpdateFormOpen);
+        
+        
         // (isUpdateFormOpen && <UpdateForm isUpdateFormOpen={isUpdateFormOpen}/>)
     }
 
@@ -30,8 +36,8 @@ export const GetData = () => {
             return <div><h1>{todo.title}</h1><p>{todo.description}</p><button id={todo.id} onClick={(event) => { updateData(event.target.id)} }>Update</button> <button>Delete</button></div>
         })}
             
-            {/* updateformcode */}
-            <UpdateForm isUpdateFormOpen={isUpdateFormOpen} id={updateId} setIsUpdateFormOpen={setIsUpdateFormOpen}/>
+
+            <UpdateForm isUpdateFormOpen={isUpdateFormOpen} id={updateId} setIsUpdateFormOpen={setIsUpdateFormOpen} updateData={updateData}/>
         </div>
     )
 }
