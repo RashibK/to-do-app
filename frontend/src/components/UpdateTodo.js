@@ -50,15 +50,17 @@ export const UpdateTodo = (props) => {
         
     }
 
-    return <> { (props.updatedData !== null && props.isupdatebtnclicked) && <div className="form-box">
-        <h1 className="update-title">Update Your To-do</h1>
-        <form className="actual-form" onSubmit={(event) => {onUpdateSubmit(event)}}>
-        <label for='update-title' className="update-title" ><input id='update-title' type='text' placeholder='To-do Title...'
-         onChange={(event) => {setTitle(event.target.value)}} value={title} required/></label>
-        <label for='description' ><textarea id='update-description' name='description' placeholder='To-do Description...' rows={5} cols={50} value={description} 
-        onChange={(event) => {setDescription(event.target.value)}} required></textarea></label>
-        <button className="cancel-button" onClick={(event) => {onCancelClick(event)}}>Cancel</button> <button className="update-button" >Submit</button>
-        </form>
-    </div> }</>
+    return <> { (props.updatedData !== null && props.isupdatebtnclicked) && 
+    <div className="whole-viewport"><div className="form-box">
+    <h1 className="update-todo-title">Update Your To-Do</h1>
+    <form className="actual-form" onSubmit={(event) => {onUpdateSubmit(event)}}>
+    <label for='update-title' className="update-title" ><input id='update-title' type='text' placeholder='Title'
+     onChange={(event) => {setTitle(event.target.value)}} value={title} required/></label>
+    <label for='update-description' className="update-description" ><textarea id='update-description' name='update-description' placeholder='Description' rows={5} cols={50} value={description} 
+    onChange={(event) => {setDescription(event.target.value)}} required></textarea></label>
+    <div className="update-buttons"><button className="cancel-button" onClick={(event) => {onCancelClick(event)}}>Cancel</button> <button className="update-button" >Update</button></div>
+    </form>
+</div></div>
+     }</>
 
 }

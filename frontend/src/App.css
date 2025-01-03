@@ -9,8 +9,7 @@
 
 .App {
   text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+
 
   display: flex;
   flex-direction: column;
@@ -58,6 +57,8 @@
 .add-form-section {
   width: 50%;
   margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .add-form {
   padding: 1em 0;
@@ -101,6 +102,11 @@
 
 
 /* todos-list */
+
+.all-todos {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .all-todos-title {
   font-size: 3em;
@@ -151,28 +157,62 @@
 
 /* updateForm component */
 
-.form-box {
-  padding: 1em;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+.whole-viewport {
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  z-index: 1000;
-  right: 25em;
-  top: 14em;
+  z-index: 100000;
+  background-color: transparent;
+  backdrop-filter: blur(2px);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
-.update-title {
-  display: block;
+.form-box {
+  background-color: white;
+  /* width: 50%;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 1000; */
+  /* left: 25%;
+  right: auto; */
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8em;
+  align-items: center;
+  border-radius: 2em;
+  max-width: 1200px;
+}
 
+.update-todo-title {
+  font-size: 40px;
+}
+
+.update-title, .update-description {
+  height: 2em;
+  width: 80%;
+
+}
+
+.update-description {
+  height: 4em;
 }
 
 #update-title {
-  height: 2em;
-  width: 27.9em;
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background-color: #F0F1F8;
+  padding: 3px 15px;
+  font-size: 16px;
+  color: #5a5a5cbf;
+  outline: none;
 }
 
 .actual-form {
@@ -184,11 +224,27 @@
 }
 
 #update-description {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background-color: #F0F1F8;
+  padding: 3px 15px;
+  font-size: 16px;
+  color: #5a5a5cbf;
+  outline: none;
   resize: none;
 }
 
+.update-buttons {
+  width: 100%;
+}
+
 .update-button, .cancel-button {
-  width: 5em;
+  width: 15%;
+  height: 2.5em;
+  border-radius: 20px;
+  border: none;
 
 
 }

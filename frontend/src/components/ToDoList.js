@@ -32,12 +32,12 @@ export const TodoList = () => {
             setIsupdatebuttonclicked(!isupdatebuttonclicked);
          }
 
-    return <div className="all-todos">
-
+    return <div>
         {isLoading && <p>...Loading....</p>}
         {isError && <p>{error?.message}</p>}
         <UpdateTodo updatedData={updatedData} setUpdatedData={setUpdatedData} isupdatebtnclicked={isupdatebuttonclicked} setIsupdatebuttonclicked={setIsupdatebuttonclicked} />
-            {isFetched && alltodos.length !== 0 && <p className="all-todos-title">All To-Dos</p>}
+        <div className="all-todos">   
+        {isFetched && alltodos.length !== 0 && <p className="all-todos-title">All To-Dos</p>}
             {alltodos && alltodos.map(todo => {
                 return <div className="todo">
                     <div className="todo-content">
@@ -50,7 +50,9 @@ export const TodoList = () => {
                     <EditIcon onClick={() => { onUpdate(todo)} } /><DeleteIcon id={todo.id} onClick={(event) => {mutate(event.target.id)}} />
                     </div>
                     </div>
+                    
                 })}
+    </div>
     </div>
 }
 
