@@ -2,6 +2,8 @@ import { useState } from "react";
 import { getTodo, addTodo, updateTodo, deleteTodo, getSpecificTodo} from "../api/todoAPI";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { UpdateTodo } from "./UpdateTodo";
+import  DeleteIcon  from '../assets/DeleteIcon';
+import EditIcon from "../assets/EditIcon";
 
 export const TodoList = () => {
 
@@ -31,12 +33,22 @@ export const TodoList = () => {
          }
 
     return <div className="all-todos">
-        
+        <p>All To-Dos</p>
         {isLoading && <p>...Loading....</p>}
         {isError && <p>{error?.message}</p>}
         <UpdateTodo updatedData={updatedData} setUpdatedData={setUpdatedData} isupdatebtnclicked={isupdatebuttonclicked} setIsupdatebuttonclicked={setIsupdatebuttonclicked} />
             {alltodos && alltodos.map(todo => {
-                return <div className=""><h1>{todo.title}</h1><p>{todo.description}</p><button id={todo.id} onClick={() => { onUpdate(todo)} }>Update</button> <button id={todo.id} onClick={(event) => {mutate(event.target.id)}}>Delete</button></div>
+                return <div className="todo">
+                    <div className="todo-content">
+                    <h1>{todo.title}</h1>
+                    <p>{todo.description}</p>
+                    </div>
+                    <div className="todo-buttons" >
+                    {/* <button id={todo.id} >Update</button> */}
+                    
+                    <EditIcon onClick={() => { onUpdate(todo)} } /><DeleteIcon id={todo.id} onClick={(event) => {mutate(event.target.id)}} />
+                    </div>
+                    </div>
                 })}
     </div>
 }
