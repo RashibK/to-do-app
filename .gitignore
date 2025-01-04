@@ -19,3 +19,93 @@ backend/to_do/migrations/__pycache__/
 
 
 
+To-Do List App
+
+A simple To-Do List application built with React for the frontend and Django for the backend. This app demonstrates fundamental CRUD (Create, Read, Update, Delete) functionality, making it easy to manage tasks effectively.
+Features
+
+    Add Tasks: Create a new task by providing a title and description.
+
+    View Tasks: Display a list of all tasks with their details.
+
+    Edit Tasks: Update task details including title and description.
+
+    Delete Tasks: Remove tasks from the list.
+
+    Interactive UI: A responsive and user-friendly React-based interface.
+
+    REST API: Django REST framework powers the backend API, allowing seamless data interaction.
+
+    Persistence: Tasks are saved in a database for long-term access.
+
+Tech Stack
+Frontend
+
+    React: A JavaScript library for building interactive user interfaces.
+
+    Axios: Used for making API requests to the backend.
+
+Backend
+
+    Django: A robust Python web framework.
+
+    Django REST Framework (DRF): Provides the API endpoints.
+
+    SQLite: Default database for development (easily switchable to others).
+
+Installation and Setup
+Prerequisites
+
+    Python 3.x
+
+    Node.js
+
+    npm or yarn
+
+Backend Setup
+
+    Clone the repository and navigate to the backend directory.
+
+    Create a virtual environment:
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+    Install dependencies:
+    pip install -r requirements.txt
+
+    Run migrations and start the server:
+    python manage.py migrate
+    python manage.py runserver
+
+Frontend Setup
+
+    Navigate to the frontend directory.
+
+    Install dependencies:
+    npm install
+
+    Start the React development server:
+    npm start
+
+API Endpoints
+Task Endpoints
+
+    Get All Tasks: GET /api/tasks/
+
+    Create Task: POST /api/tasks/
+
+    Update Task: PUT /api/tasks/<id>/
+
+    Delete Task: DELETE /api/tasks/<id>/
+
+Screenshots
+
+Include some screenshots of your app here, such as the task list view, add task form, and edit task form.
+Contribution
+
+Feel free to fork this repository and contribute by submitting a pull request. Suggestions and improvements are always welcome!
+License
+
+This project is licensed under the MIT License.
+
+
